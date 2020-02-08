@@ -1,11 +1,9 @@
-ARG ARCH="amd64"
-ARG OS="linux"
-FROM quay.io/prometheus/busybox-${OS}-${ARCH}:latest
+FROM quay.io/prometheus/busybox-linux-amd64:latest
 LABEL maintainer="The Prometheus Authors <prometheus-developers@googlegroups.com>"
 
 ARG ARCH="amd64"
 ARG OS="linux"
-COPY --chown=nobody:nogroup .build/${OS}-${ARCH}/pushgateway /bin/pushgateway
+COPY --chown=nobody:nogroup .build/linux-amd64/pushgateway /bin/pushgateway
 
 EXPOSE 9091
 RUN mkdir -p /pushgateway && chown nobody:nogroup /pushgateway
